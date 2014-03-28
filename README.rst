@@ -36,8 +36,9 @@ or the environment variable `OS_CONFIG_FILES_PATH`. The list can
 also be overridden with the environment variable `OS_CONFIG_FILES`.
 If overriding with `OS_CONFIG_FILES`, the paths are expected to be colon,
 ":", separated. Each json file referred to must have a mapping as their
-root structure. Keys in files mentioned later in the list will override
-keys in earlier files from this list. For example::
+root structure. Non-mappings will be ignored. Keys in files mentioned
+later in the list will override keys in earlier files from this list. For
+example::
 
     OS_CONFIG_FILES=/tmp/ec2.json:/tmp/cfn.json os-apply-config
 

@@ -114,3 +114,11 @@ class TestMergeConfigs(testtools.TestCase):
                          {'a': [4, 5, 6]}]
         result = collect_config.merge_configs(list_conflict)
         self.assertEqual({'a': [4, 5, 6]}, result)
+
+    def test_merge_ignores_string_root(self):
+        string_and_map = ['ignore me', {'a': 'avalue'}]
+        result = collect_config.merge_configs(string_and_map)
+        self.assertEqual({'a': 'avalue'}, result)
+
+    def test_merge_only_string(self):
+        self.assertEqual({}, collect_config.merge_configs(['move along']))
